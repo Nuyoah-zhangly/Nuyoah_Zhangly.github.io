@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="utf-8">
+  
+  <title>
+    
+    Day8:知识点记录
+    
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  
+<script src="https://cdn.staticfile.org/prism/1.17.1/prism.min.js"></script>
+
+  
+<script src="https://cdn.staticfile.org/prism/1.17.1/plugins/autoloader/prism-autoloader.min.js"></script>
+
+  
+<link rel="stylesheet" href="/css/prism/material-light.css">
+
+  
+<link rel="stylesheet" href="/css/prism/material-dark.css">
+
+  
+<script src="https://cdn.staticfile.org/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.js"></script>
+
+  
+<link rel="stylesheet" href="https://cdn.staticfile.org/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Noto+Sans+SC:wght@300&display=swap.css">
+
+  
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<script>
+  function setIsNight(isNight) {
+    localStorage.setItem('isNight', isNight)
+  }
+
+  function getIsNight() {
+    return localStorage.getItem('isNight')
+  }
+
+  function switchTheme() {
+    let isNight = getIsNight()
+    if (isNight === 'false') {
+      document.documentElement.className = 'dark'
+      document.getElementsByClassName('theme-switcher')[0].textContent = '😴'
+      setIsNight('true')
+    } else {
+      document.documentElement.className = 'light'
+      document.getElementsByClassName('theme-switcher')[0].textContent = '😳'
+      setIsNight('false')
+    }
+  }
+
+  let isNight = getIsNight()
+  if (isNight == null) {
+    isNight = 'false'
+    setIsNight('false')
+  }
+  if (isNight === 'false') {
+    document.documentElement.className = 'light'
+  } else {
+    document.documentElement.className = 'dark'
+  }
+</script>
+
+<body>
+  <div class="show-area">
+    <header>
+  <ul class="nav">
+    <li class="nav-child">
+      <a href="/">首页</a>
+    </li>
+    <li class="nav-child">
+      <a href="/categories">分类</a>
+    </li>
+    <li class="nav-child">
+      <a href="/tags">标签</a>
+    </li>
+    <li class="nav-child">
+      <a href="/about">关于</a>
+    </li>
+    <li class="nav-child">
+      <a href="/collection">收藏</a>
+    </li>
+    <li class="nav-child">
+      <a href="/board">留言</a>
+    </li>
+  </ul>
+  <div class="theme-switcher" onclick="switchTheme()">😳</div>
+  <script>
+    if (isNight === 'false') {
+      document.getElementsByClassName('theme-switcher')[0].textContent = '😳'
+    } else {
+      document.getElementsByClassName('theme-switcher')[0].textContent = '😴'
+    }
+  </script>
+</header>
+    <main class="main-body">
+  <div class="toc-container">
+    <div class="toc-toggle">
+      <i id="toc-b-icon" class="iconfont icon-liebiao-01" onclick="toggleShow()"></i>
+    </div>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4"><span class="toc-number">1.</span> <span class="toc-text">日期和时间</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E6%97%A5%E6%9C%9F%E7%BB%84%E4%BB%B6"><span class="toc-number">1.1.</span> <span class="toc-text">设置日期组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A5%E6%9C%9F%E8%BD%AC%E5%8C%96%E4%B8%BA%E6%95%B0%E5%AD%97-%E6%97%A5%E6%9C%9F%E5%B7%AE%E5%80%BC"><span class="toc-number">1.2.</span> <span class="toc-text">日期转化为数字,日期差值</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Date-now"><span class="toc-number">1.2.1.</span> <span class="toc-text">Date.now()</span></a></li></ol></li></ol></li></ol>
+  </div>
+  
+  <script>
+    var show = false
+    function toggleShow() {
+      if (show) {
+        document.getElementsByClassName('toc')[0].className = 'toc'
+        document.getElementById('toc-b-icon').className = 'iconfont icon-liebiao-01'
+      } else {
+        document.getElementsByClassName('toc')[0].className = 'toc show'
+        document.getElementById('toc-b-icon').className = 'iconfont icon-quxiao-01'
+      }
+      show = !show
+    }
+    document.getElementsByClassName('toc')[0].onclick = toggleShow
+  </script>
+  
+  <div class="article-header">
+    <h1 class="article-title">Day8:知识点记录</h1>
+    <div class="article-details">
+      <div class="article-post-date"><span>Posted at </span> 2020-09-25</div>
+      <div class="article-tags">
+        
+        <a href="/tags/Javascript">#Javascript</a>
+        
+      </div>
+    </div>
+  </div>
+  <div class="article">
+  
+  <h1 id="日期和时间"><a href="#日期和时间" class="headerlink" title="日期和时间"></a>日期和时间</h1><p>283 移动零</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">const moveZeroes &#x3D; (nums) &#x3D;&gt;&#123;
+   let j &#x3D; 0;
+   for(let i &#x3D;0;i&lt;nums.length;i++&gt;)&#123;
+     if(nums[i]!&#x3D;&#x3D; 0)&#123;
+       nums[j] &#x3D; nums[i];
+       j++;
+     &#125;&#x2F;&#x2F;非零元素处理
+   &#125;
+   for(i&#x3D;j;i&lt;nums.length;i++&gt;)&#123;
+     nums[i] &#x3D; 0;
+   &#125;
+   return nums;
+&#125;
+
+
+### new Date()
+我们通过时间戳来创建日期
+并且可以使用data.getTime() 将现有的Date对象转换为时间戳
+
+&gt;01.01.1970之前的日期带有负的时间戳  new Date(-24 * 3600 * 1000);
+
+- 如果只有一个参数,并且是字符串,那么他会被自动解析。
+- 使用当前时区中给定的组件创建日期，只有前两个参数是必须的
+- 时间度量精确到1毫秒(1&#x2F;1000秒)
+
+## 访问日期组件
+ 从 Date 对象中访问年、月等信息有多种方式：
+- getFullYear() 获取年份(4位数)
+- getMonth() 获取月份,从0到11
+- getDate() 获取当月的具体日期，从1到31
+- getHours()
+- getMinutes()
+- getSeconds()
+- getMilliseconds()
+
+
+- getDay() 获取一周中的第几天
+
+​&#96;&#96;&#96;txt
+UTC(协调世界时) UTC时区知名之一，比如UTC(协调世界时)提前0个小时,它被用作标准时间。</code></pre>
+
+<ul>
+<li><p>getTime() 返回日期的时间戳 从1970-1-1 00:00:00 UTC+0开始到现在所经过的毫秒数</p>
+</li>
+<li><p>getTimezoneOffset() 返回  UTC与本地时区之间的时差,以分钟为单位。</p>
+</li>
+</ul>
+<h2 id="设置日期组件"><a href="#设置日期组件" class="headerlink" title="设置日期组件"></a>设置日期组件</h2><ul>
+<li>setFullYear() </li>
+<li>setMouth()</li>
+<li>setDate()</li>
+<li>setHours()</li>
+<li>setMinutes()</li>
+<li>setSeconds()</li>
+<li>setMilliseconds()</li>
+<li>setTime() 使用自1970-01-01 00:00:00 UTC+0以来的毫秒数来设置整个日期</li>
+</ul>
+<h2 id="日期转化为数字-日期差值"><a href="#日期转化为数字-日期差值" class="headerlink" title="日期转化为数字,日期差值"></a>日期转化为数字,日期差值</h2><blockquote>
+<p>日期可以相减,相减的结果是以毫秒为单位时间差。这个作用可用于时间测量。</p>
+</blockquote>
+<h3 id="Date-now"><a href="#Date-now" class="headerlink" title="Date.now()"></a>Date.now()</h3><p>测量时间间隔</p>
+<p>返回当前的时间戳 相当于new Date().getTime()<br>许多天之前是哪个月几号</p>
+
+</div>
+  <o3o key="mizore" api="https://o3o.mizore.site:2333"></o3o>
+  
+<script src="/o3o/o3o.js"></script>
+
+  
+<link rel="stylesheet" href="/css/o3o.css">
+
+</main>
+    <footer>
+  <div class="footer-info">© 2018-2022 zhangliyao | Powerd by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> | Theme <a
+      target="_blank" rel="noopener" href="https://github.com/mizoreyo/hexo-theme-insnow">Insnow</a> | <a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">蜀ICP备20005398号</a></div>
+  <div class="footer-info">
+    <a class="footer-i" target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/mizoreyo/static/images/wechat.PNG"><i class="iconfont icon-wechat"></i></a>
+    <a class="footer-i" target="_blank" rel="noopener" href="https://github.com/mizoreyo"><i class="iconfont icon-github-fill"></i></a>
+    <a class="footer-i" href="/atom.xml"><i class="iconfont icon-rss"></i></a>
+    <a class="footer-i" href="mailto:mizoreyo@outlook.com"><i class="iconfont icon-mail"></i></a>
+  </div>
+</footer>
+  </div>
+</body>
+
+
+</html>

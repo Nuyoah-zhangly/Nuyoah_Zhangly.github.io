@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="utf-8">
+  
+  <title>
+    
+    Day11:知识点记录
+    
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  
+<script src="https://cdn.staticfile.org/prism/1.17.1/prism.min.js"></script>
+
+  
+<script src="https://cdn.staticfile.org/prism/1.17.1/plugins/autoloader/prism-autoloader.min.js"></script>
+
+  
+<link rel="stylesheet" href="/css/prism/material-light.css">
+
+  
+<link rel="stylesheet" href="/css/prism/material-dark.css">
+
+  
+<script src="https://cdn.staticfile.org/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.js"></script>
+
+  
+<link rel="stylesheet" href="https://cdn.staticfile.org/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Noto+Sans+SC:wght@300&display=swap.css">
+
+  
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<script>
+  function setIsNight(isNight) {
+    localStorage.setItem('isNight', isNight)
+  }
+
+  function getIsNight() {
+    return localStorage.getItem('isNight')
+  }
+
+  function switchTheme() {
+    let isNight = getIsNight()
+    if (isNight === 'false') {
+      document.documentElement.className = 'dark'
+      document.getElementsByClassName('theme-switcher')[0].textContent = '😴'
+      setIsNight('true')
+    } else {
+      document.documentElement.className = 'light'
+      document.getElementsByClassName('theme-switcher')[0].textContent = '😳'
+      setIsNight('false')
+    }
+  }
+
+  let isNight = getIsNight()
+  if (isNight == null) {
+    isNight = 'false'
+    setIsNight('false')
+  }
+  if (isNight === 'false') {
+    document.documentElement.className = 'light'
+  } else {
+    document.documentElement.className = 'dark'
+  }
+</script>
+
+<body>
+  <div class="show-area">
+    <header>
+  <ul class="nav">
+    <li class="nav-child">
+      <a href="/">首页</a>
+    </li>
+    <li class="nav-child">
+      <a href="/categories">分类</a>
+    </li>
+    <li class="nav-child">
+      <a href="/tags">标签</a>
+    </li>
+    <li class="nav-child">
+      <a href="/about">关于</a>
+    </li>
+    <li class="nav-child">
+      <a href="/collection">收藏</a>
+    </li>
+    <li class="nav-child">
+      <a href="/board">留言</a>
+    </li>
+  </ul>
+  <div class="theme-switcher" onclick="switchTheme()">😳</div>
+  <script>
+    if (isNight === 'false') {
+      document.getElementsByClassName('theme-switcher')[0].textContent = '😳'
+    } else {
+      document.getElementsByClassName('theme-switcher')[0].textContent = '😴'
+    }
+  </script>
+</header>
+    <main class="main-body">
+  <div class="toc-container">
+    <div class="toc-toggle">
+      <i id="toc-b-icon" class="iconfont icon-liebiao-01" onclick="toggleShow()"></i>
+    </div>
+    
+  </div>
+  
+  <script>
+    var show = false
+    function toggleShow() {
+      if (show) {
+        document.getElementById('toc-b-icon').className = 'iconfont icon-liebiao-01'
+      } else {
+        document.getElementById('toc-b-icon').className = 'iconfont icon-quxiao-01'
+      }
+      show = !show
+    }
+  </script>
+  
+  <div class="article-header">
+    <h1 class="article-title">Day11:知识点记录</h1>
+    <div class="article-details">
+      <div class="article-post-date"><span>Posted at </span> 2020-09-28</div>
+      <div class="article-tags">
+        
+        <a href="/tags/Javascript">#Javascript</a>
+        
+      </div>
+    </div>
+  </div>
+  <div class="article">
+  
+  <p>格式化日期</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">function formatDate(date: Date, pattern: string): string &#123;
+    const data &#x3D; new Date();
+    let month:number|string &#x3D; data.getMonth()+1;
+    let day:number|string &#x3D; data.getDay();
+    return &#96;$&#123;data.getFullYear()&#125;-$&#123;month&#125;-$&#123;day&#125; $&#123;data.getHours()&#125;:$&#123;data.getMinutes()&#125;:$&#123;data.getSeconds()&#125;&#96;
+&#125;</code></pre>
+
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">function formatDate(date: Date, pattern: string &#x3D; &quot;yyyy年MM月dd日&quot;): string &#123;
+  
+  let nDate &#x3D; new Date()
+  if(typeof date &#x3D;&#x3D;&#x3D; &#39;string&#39; || typeof date &#x3D;&#x3D;&#x3D; &#39;number&#39;)&#123;
+     nData &#x3D; new Date(+date)
+  &#125;else&#123;
+      nDate &#x3D; date
+  &#125;
+  const o &#x3D; &#123;
+    &#39;M+&#39;: nDate.getMonth() + 1,
+    &#39;d+&#39;: nDate.getDate(),
+    &#39;h+&#39;: nDate.getHours(),
+    &#39;m+&#39;: nDate.getMinutes(),
+    &#39;s+&#39;: nDate.getSeconds(),
+  &#125;
+
+  if (&#x2F;(y+)&#x2F;.test(pattern)) &#123;
+    pattern &#x3D; pattern.replace(
+      RegExp.$1,
+      (nDate.getFullYear() + &#39;&#39;).substr(4 - RegExp.$1.length)
+    )
+  &#125;
+ for(const k in o)&#123;
+   if(new RegExp(&#96;($&#123;k&#125;&#96;).test(pattern))&#123;
+     cosnt str &#x3D;  o[k] +&#39;&#39;
+     frm &#x3D; frm.replace(
+        RegExp.$1,
+         RegExp.$1.length &#x3D;&#x3D;&#x3D; 1 ? str: ((&#39;00&#39;+str).substr(str.length))
+     )
+   &#125;
+ &#125;
+  return pattern
+&#125;
+console.log(formatDate(1601364446000,&quot;yyyy年MM月dd日&quot;))</code></pre>
+</div>
+  <o3o key="mizore" api="https://o3o.mizore.site:2333"></o3o>
+  
+<script src="/o3o/o3o.js"></script>
+
+  
+<link rel="stylesheet" href="/css/o3o.css">
+
+</main>
+    <footer>
+  <div class="footer-info">© 2018-2022 zhangliyao | Powerd by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> | Theme <a
+      target="_blank" rel="noopener" href="https://github.com/mizoreyo/hexo-theme-insnow">Insnow</a> | <a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">蜀ICP备20005398号</a></div>
+  <div class="footer-info">
+    <a class="footer-i" target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/mizoreyo/static/images/wechat.PNG"><i class="iconfont icon-wechat"></i></a>
+    <a class="footer-i" target="_blank" rel="noopener" href="https://github.com/mizoreyo"><i class="iconfont icon-github-fill"></i></a>
+    <a class="footer-i" href="/atom.xml"><i class="iconfont icon-rss"></i></a>
+    <a class="footer-i" href="mailto:mizoreyo@outlook.com"><i class="iconfont icon-mail"></i></a>
+  </div>
+</footer>
+  </div>
+</body>
+
+
+</html>

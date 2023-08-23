@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="utf-8">
+  
+  <title>
+    
+    Day7:知识点记录
+    
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  
+<script src="https://cdn.staticfile.org/prism/1.17.1/prism.min.js"></script>
+
+  
+<script src="https://cdn.staticfile.org/prism/1.17.1/plugins/autoloader/prism-autoloader.min.js"></script>
+
+  
+<link rel="stylesheet" href="/css/prism/material-light.css">
+
+  
+<link rel="stylesheet" href="/css/prism/material-dark.css">
+
+  
+<script src="https://cdn.staticfile.org/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.js"></script>
+
+  
+<link rel="stylesheet" href="https://cdn.staticfile.org/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Noto+Sans+SC:wght@300&display=swap.css">
+
+  
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<script>
+  function setIsNight(isNight) {
+    localStorage.setItem('isNight', isNight)
+  }
+
+  function getIsNight() {
+    return localStorage.getItem('isNight')
+  }
+
+  function switchTheme() {
+    let isNight = getIsNight()
+    if (isNight === 'false') {
+      document.documentElement.className = 'dark'
+      document.getElementsByClassName('theme-switcher')[0].textContent = '😴'
+      setIsNight('true')
+    } else {
+      document.documentElement.className = 'light'
+      document.getElementsByClassName('theme-switcher')[0].textContent = '😳'
+      setIsNight('false')
+    }
+  }
+
+  let isNight = getIsNight()
+  if (isNight == null) {
+    isNight = 'false'
+    setIsNight('false')
+  }
+  if (isNight === 'false') {
+    document.documentElement.className = 'light'
+  } else {
+    document.documentElement.className = 'dark'
+  }
+</script>
+
+<body>
+  <div class="show-area">
+    <header>
+  <ul class="nav">
+    <li class="nav-child">
+      <a href="/">首页</a>
+    </li>
+    <li class="nav-child">
+      <a href="/categories">分类</a>
+    </li>
+    <li class="nav-child">
+      <a href="/tags">标签</a>
+    </li>
+    <li class="nav-child">
+      <a href="/about">关于</a>
+    </li>
+    <li class="nav-child">
+      <a href="/collection">收藏</a>
+    </li>
+    <li class="nav-child">
+      <a href="/board">留言</a>
+    </li>
+  </ul>
+  <div class="theme-switcher" onclick="switchTheme()">😳</div>
+  <script>
+    if (isNight === 'false') {
+      document.getElementsByClassName('theme-switcher')[0].textContent = '😳'
+    } else {
+      document.getElementsByClassName('theme-switcher')[0].textContent = '😴'
+    }
+  </script>
+</header>
+    <main class="main-body">
+  <div class="toc-container">
+    <div class="toc-toggle">
+      <i id="toc-b-icon" class="iconfont icon-liebiao-01" onclick="toggleShow()"></i>
+    </div>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E8%B5%8B%E5%80%BC"><span class="toc-number">1.</span> <span class="toc-text">结构赋值</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%BB%93%E6%9E%84%E4%BC%98%E9%9B%85%E5%86%99%E6%B3%95"><span class="toc-number">1.1.</span> <span class="toc-text">数组结构优雅写法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-number">1.2.</span> <span class="toc-text">数组的结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%A9%E4%BD%99%E5%8F%82%E6%95%B0"><span class="toc-number">1.2.1.</span> <span class="toc-text">剩余参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="toc-number">1.2.2.</span> <span class="toc-text">默认值</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-number">1.3.</span> <span class="toc-text">对象的结构</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E9%A2%98-%E5%8A%A0%E4%B8%80"><span class="toc-number">2.</span> <span class="toc-text">算法题 加一</span></a></li></ol>
+  </div>
+  
+  <script>
+    var show = false
+    function toggleShow() {
+      if (show) {
+        document.getElementsByClassName('toc')[0].className = 'toc'
+        document.getElementById('toc-b-icon').className = 'iconfont icon-liebiao-01'
+      } else {
+        document.getElementsByClassName('toc')[0].className = 'toc show'
+        document.getElementById('toc-b-icon').className = 'iconfont icon-quxiao-01'
+      }
+      show = !show
+    }
+    document.getElementsByClassName('toc')[0].onclick = toggleShow
+  </script>
+  
+  <div class="article-header">
+    <h1 class="article-title">Day7:知识点记录</h1>
+    <div class="article-details">
+      <div class="article-post-date"><span>Posted at </span> 2020-09-24</div>
+      <div class="article-tags">
+        
+        <a href="/tags/Javascript">#Javascript</a>
+        
+      </div>
+    </div>
+  </div>
+  <div class="article">
+  
+  <h1 id="结构赋值"><a href="#结构赋值" class="headerlink" title="结构赋值"></a>结构赋值</h1><p>可以立即将一个对象或者数组映射到多个变量上。</p>
+<h2 id="数组结构优雅写法"><a href="#数组结构优雅写法" class="headerlink" title="数组结构优雅写法"></a>数组结构优雅写法</h2><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">const [firstName,surName] &#x3D; &quot;lily Kantor&quot;.split(&#39; &#39;)
+console.log(firstName,surName) &#x2F;&#x2F;lily Kantor
+console.log(&quot;lily Kantor&quot;.split(&#39; &#39;)) &#x2F;&#x2F;[&quot;lily&quot;, &quot;Kantor&quot;]</code></pre>
+
+<h2 id="数组的结构"><a href="#数组的结构" class="headerlink" title="数组的结构"></a>数组的结构</h2><ul>
+<li>将结构中的各个元素复制到变量中达到结构的目的,<code>数组本身并没有被修改</code></li>
+<li>对于不想要的元素,可以通过<code>逗号</code>来把它丢弃</li>
+<li>可以是任何迭代的对象，不仅仅是数组。</li>
+</ul>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">let [a,b,c] &#x3D; &quot;abc&quot;    &#x2F;&#x2F;[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]
+let [one,two,three] &#x3D; new Set([1,2,3])
+console.log([one,two,three])  &#x2F;&#x2F;[1, 2, 3]</code></pre>
+
+<ul>
+<li>可以赋值给等号左侧的任何内容</li>
+</ul>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">let user &#x3D; &#123;&#125;;
+
+[user.name,user.surName] &#x3D; &quot;lily Kantor&quot;.split(&#39; &#39;)
+
+console.log(user.name) &#x2F;&#x2F;lily</code></pre>
+
+<ul>
+<li>与entries() 方法进行循环操作</li>
+</ul>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">let user &#x3D; &#123;
+  name:&quot;Join&quot;,
+  age:20
+&#125;
+
+&#x2F;&#x2F;循环遍历键值 (同样适用于Map)
+
+for (let [key, value] of Object.entries(user)) &#123;
+  console.log(&#96;$&#123;key&#125;:$&#123;value&#125;&#96;); &#x2F;&#x2F; name:John, then age:30
+&#125;
+</code></pre>
+
+<ul>
+<li>交换变量的值(技巧)</li>
+</ul>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">let guest &#x3D; &quot;jane&quot;;
+let admin &#x3D; &quot;Pete&quot;;
+
+[guest, admin] &#x3D; [admin, guest];
+
+console.log(&#96;$&#123;guest&#125; $&#123;admin&#125;&#96;) &#x2F;&#x2F;Pete jane</code></pre>
+
+<h3 id="剩余参数"><a href="#剩余参数" class="headerlink" title="剩余参数"></a>剩余参数</h3><p>…</p>
+<h3 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h3><p>默认值可以是复杂的表达式,也可以是函数调用</p>
+<h2 id="对象的结构"><a href="#对象的结构" class="headerlink" title="对象的结构"></a>对象的结构</h2><ul>
+<li>如果使用已有的变量,而不是用let ,我们需要用括号() ,<br>把它括起来,否则js会将主代码流当作一个代码块,进行语句分组。</li>
+</ul>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">let salaries &#x3D; &#123;
+  &quot;Join&quot;:100,
+  &quot;Pete&quot;:200,
+  &quot;Mary&quot;:30
+&#125;
+
+topSarays(salaries)&#123;
+  let max &#x3D; 0;
+  let maxName &#x3D; null;
+  for(let [key,value] of Object.entries(salaries))&#123;
+    if(max &lt; value)&#123;
+      max &#x3D; value
+      maxName &#x3D; key
+    &#125;
+    return maxName
+  &#125;
+&#125;
+topSarays(&#123;&#125;)
+</code></pre>
+
+<h1 id="算法题-加一"><a href="#算法题-加一" class="headerlink" title="算法题 加一"></a>算法题 加一</h1><ul>
+<li>给定一个由整数组成的非空数组所表示的非负整数,在该数的基础上加一。</li>
+<li>最高位数字存放在数组的首位，数组中每个元素只存储单个数字。</li>
+<li>你可以假设除了整数0之外,这个整数不会以零开头。</li>
+</ul>
+<p>示例一 </p>
+<pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">输入:[1,2,3]
+输出:[1,2,4]
+解释：输入数组表示数字123。</code></pre>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">&#x2F;**
+ * @param &#123;number[]&#125; digits
+ * @return &#123;number[]&#125;
+ *&#x2F;
+const plusOne &#x3D; (digits) &#x3D;&gt; &#123;  
+    for(let i &#x3D; digits[i].length;i &gt;&#x3D; 0;i--)&#123;
+      if(digits[i] !&#x3D;&#x3D; 9)&#123;
+        digits[i]++;
+        return digits[i]
+      &#125;else&#123;
+        digits[i] &#x3D; 0
+      &#125;
+    &#125;
+     const result &#x3D; [1,...digits]
+     return result
+&#125;
+</code></pre>
+
+</div>
+  <o3o key="mizore" api="https://o3o.mizore.site:2333"></o3o>
+  
+<script src="/o3o/o3o.js"></script>
+
+  
+<link rel="stylesheet" href="/css/o3o.css">
+
+</main>
+    <footer>
+  <div class="footer-info">© 2018-2022 zhangliyao | Powerd by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> | Theme <a
+      target="_blank" rel="noopener" href="https://github.com/mizoreyo/hexo-theme-insnow">Insnow</a> | <a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">蜀ICP备20005398号</a></div>
+  <div class="footer-info">
+    <a class="footer-i" target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/mizoreyo/static/images/wechat.PNG"><i class="iconfont icon-wechat"></i></a>
+    <a class="footer-i" target="_blank" rel="noopener" href="https://github.com/mizoreyo"><i class="iconfont icon-github-fill"></i></a>
+    <a class="footer-i" href="/atom.xml"><i class="iconfont icon-rss"></i></a>
+    <a class="footer-i" href="mailto:mizoreyo@outlook.com"><i class="iconfont icon-mail"></i></a>
+  </div>
+</footer>
+  </div>
+</body>
+
+
+</html>

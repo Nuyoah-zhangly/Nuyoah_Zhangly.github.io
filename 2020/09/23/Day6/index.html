@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="utf-8">
+  
+  <title>
+    
+    Day6:知识点记录
+    
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  
+<script src="https://cdn.staticfile.org/prism/1.17.1/prism.min.js"></script>
+
+  
+<script src="https://cdn.staticfile.org/prism/1.17.1/plugins/autoloader/prism-autoloader.min.js"></script>
+
+  
+<link rel="stylesheet" href="/css/prism/material-light.css">
+
+  
+<link rel="stylesheet" href="/css/prism/material-dark.css">
+
+  
+<script src="https://cdn.staticfile.org/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.js"></script>
+
+  
+<link rel="stylesheet" href="https://cdn.staticfile.org/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Noto+Sans+SC:wght@300&display=swap.css">
+
+  
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<script>
+  function setIsNight(isNight) {
+    localStorage.setItem('isNight', isNight)
+  }
+
+  function getIsNight() {
+    return localStorage.getItem('isNight')
+  }
+
+  function switchTheme() {
+    let isNight = getIsNight()
+    if (isNight === 'false') {
+      document.documentElement.className = 'dark'
+      document.getElementsByClassName('theme-switcher')[0].textContent = '😴'
+      setIsNight('true')
+    } else {
+      document.documentElement.className = 'light'
+      document.getElementsByClassName('theme-switcher')[0].textContent = '😳'
+      setIsNight('false')
+    }
+  }
+
+  let isNight = getIsNight()
+  if (isNight == null) {
+    isNight = 'false'
+    setIsNight('false')
+  }
+  if (isNight === 'false') {
+    document.documentElement.className = 'light'
+  } else {
+    document.documentElement.className = 'dark'
+  }
+</script>
+
+<body>
+  <div class="show-area">
+    <header>
+  <ul class="nav">
+    <li class="nav-child">
+      <a href="/">首页</a>
+    </li>
+    <li class="nav-child">
+      <a href="/categories">分类</a>
+    </li>
+    <li class="nav-child">
+      <a href="/tags">标签</a>
+    </li>
+    <li class="nav-child">
+      <a href="/about">关于</a>
+    </li>
+    <li class="nav-child">
+      <a href="/collection">收藏</a>
+    </li>
+    <li class="nav-child">
+      <a href="/board">留言</a>
+    </li>
+  </ul>
+  <div class="theme-switcher" onclick="switchTheme()">😳</div>
+  <script>
+    if (isNight === 'false') {
+      document.getElementsByClassName('theme-switcher')[0].textContent = '😳'
+    } else {
+      document.getElementsByClassName('theme-switcher')[0].textContent = '😴'
+    }
+  </script>
+</header>
+    <main class="main-body">
+  <div class="toc-container">
+    <div class="toc-toggle">
+      <i id="toc-b-icon" class="iconfont icon-liebiao-01" onclick="toggleShow()"></i>
+    </div>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Object-keys%E3%80%81Object-values%E3%80%81Object-entries"><span class="toc-number">1.</span> <span class="toc-text">Object.keys、Object.values、Object.entries</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0%E5%92%8CMap-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="toc-number">2.</span> <span class="toc-text">普通函数和Map 有什么区别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AC%E6%8D%A2%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.0.1.</span> <span class="toc-text">转换对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#exercise"><span class="toc-number">2.0.1.1.</span> <span class="toc-text">exercise</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC"><span class="toc-number">3.</span> <span class="toc-text">解构赋值</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#350-%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86-II-indexOf%E6%A3%80%E6%9F%A5%E6%98%AF%E5%90%A6%E5%8F%A6%E4%B8%80%E4%B8%AA%E6%95%B0%E7%BB%84%E5%AD%98%E5%9C%A8%EF%BC%8C%E5%93%88%E5%B8%8C%E8%A1%A8%E8%AE%B0%E5%BD%95%E5%85%83%E7%B4%A0%E5%87%BA%E7%8E%B0%E7%9A%84%E4%B8%AA%E6%95%B0%E3%80%81%E5%BA%8F%E5%88%97%E4%BC%98%E5%8C%96%E5%BE%AA%E7%8E%AF"><span class="toc-number">4.</span> <span class="toc-text">350 两个数组的交集 II  (indexOf检查是否另一个数组存在，哈希表记录元素出现的个数、序列优化循环)</span></a></li></ol>
+  </div>
+  
+  <script>
+    var show = false
+    function toggleShow() {
+      if (show) {
+        document.getElementsByClassName('toc')[0].className = 'toc'
+        document.getElementById('toc-b-icon').className = 'iconfont icon-liebiao-01'
+      } else {
+        document.getElementsByClassName('toc')[0].className = 'toc show'
+        document.getElementById('toc-b-icon').className = 'iconfont icon-quxiao-01'
+      }
+      show = !show
+    }
+    document.getElementsByClassName('toc')[0].onclick = toggleShow
+  </script>
+  
+  <div class="article-header">
+    <h1 class="article-title">Day6:知识点记录</h1>
+    <div class="article-details">
+      <div class="article-post-date"><span>Posted at </span> 2020-09-23</div>
+      <div class="article-tags">
+        
+        <a href="/tags/Javascript">#Javascript</a>
+        
+      </div>
+    </div>
+  </div>
+  <div class="article">
+  
+  <h1 id="Object-keys、Object-values、Object-entries"><a href="#Object-keys、Object-values、Object-entries" class="headerlink" title="Object.keys、Object.values、Object.entries"></a>Object.keys、Object.values、Object.entries</h1><h1 id="普通函数和Map-有什么区别"><a href="#普通函数和Map-有什么区别" class="headerlink" title="普通函数和Map 有什么区别"></a>普通函数和Map 有什么区别</h1><p>调用语法 和返回值的不同<br>1)<br>Map 调用语法 <code>map.keys()</code><br>Object 调用语法是 <code>Object.keys(obj)</code>，而不是obj.keys()<br>2)<br>Map的返回值是<code>可迭代项</code><br>Object 的返回值是<code>&quot;真正的数组&quot;</code><br>Why?<br>其一：</p>
+<blockquote>
+<p>因为灵活性,在javascript中,对象是所有复杂结构的基础。</p>
+</blockquote>
+<pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">比如我们有一个自己创建的对象data,并可以实现它自己的data.values()方法,同时我们依然可以调用Object.values(data)方法</code></pre>
+<p>其二：</p>
+<blockquote>
+<p>Object.* 返回的是真正的数组对象，而不是迭代项,这主要是历史原因</p>
+</blockquote>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">let user &#x3D; &#123;
+  name:&quot;join&quot;,
+  age:30
+&#125;;
+console.log(Object.keys(user))  &#x2F;&#x2F;[&quot;name&quot;,&quot;age&quot;]
+console.log(Object.values(user)) &#x2F;&#x2F;[&quot;join&quot;,30]
+console.log(Object.entries(user)) &#x2F;&#x2F;[[&quot;name&quot;:&quot;join&quot;],[&quot;age&quot;:30]]</code></pre>
+
+<p>使用<code>Object.values</code>来遍历属性的值</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">let user &#x3D; &#123;
+  name:&quot;join&quot;,
+  age:30
+&#125;;
+
+for(let value of Object.values(user))&#123;
+  console.log(value) &#x2F;&#x2F; join,then 30
+&#125;
+ </code></pre>
+
+<blockquote>
+<blockquote>
+<p> Object.keys/values/entries 会忽略 symbol 属性<br> 就像 for..in 循环一样，这些方法会忽略使用 Symbol(…) 作为键的属性。</p>
+</blockquote>
+</blockquote>
+<p>   通常这很方便。但是，如果我们也想要 Symbol 类型的键，那么这儿有一个单独的方法 Object.getOwnPropertySymbols，它会返回一个只包含 Symbol 类型的键的数组。另外，还有一种方法 Reflect.ownKeys(obj)，它会返回 所有 键。</p>
+<h3 id="转换对象"><a href="#转换对象" class="headerlink" title="转换对象"></a>转换对象</h3><p>因为对象缺少数组的方法比如map、filter。所以我们需要使用<br>Object.entries() ，然后再使用Object.fromEntries()</p>
+<ul>
+<li>使用Object.entries(obj) ,从中获取obj的键/值对组成的数组。</li>
+<li>对该数组适应数组的方法,比如map</li>
+<li>对结果数组使用Object.fromEntries(array)方法,将结果转换为对象。</li>
+</ul>
+<p>一个带有价格的对象,进行加倍</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">let prices &#x3D; &#123;
+  banana: 1,
+  orange: 2,
+  meat: 4,
+&#125;;
+
+let doublePrices &#x3D; Object.fromEntries(
+  &#x2F;&#x2F; 转换为数组，之后使用 map 方法，然后通过 fromEntries 再转回到对象
+  Object.entries(prices).map(([key, value]) &#x3D;&gt; [key, value * 2])
+);
+
+console.log(doublePrices.meat); &#x2F;&#x2F; 8</code></pre>
+
+<h4 id="exercise"><a href="#exercise" class="headerlink" title="exercise"></a>exercise</h4><p>属性求和</p>
+<p>有一个带有任意数量薪水的 salaries 对象。</p>
+<p>编写函数 sumSalaries(salaries)，该函数使用 Object.values 和 for..of 循环返回所有薪水的总和。</p>
+<p>如果 salaries 是空对象，那么结果必须是 0。</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"> 
+ let salaries &#x3D; &#123;
+     &quot;John&quot;:100,
+     &quot;Pete&quot;:200,
+     &quot;Mary&quot;:300,
+ &#125;
+&#x2F;&#x2F;方案一
+function sunSararies(salaries)&#123;
+  let num &#x3D; 0;
+  for(let value of Object.values(salaries))&#123;
+    num +&#x3D; value
+  &#125;
+  return num;  &#x2F;&#x2F;600
+&#125;
+&#x2F;&#x2F;方案二
+function sunSararies(salaries)&#123;
+  return Object.values(salaries).reduce((sum,item) &#x3D;&gt; sum+item,0)
+&#125;
+
+sunSararies(salaries)
+</code></pre>
+
+<p>计算属性数量</p>
+<p>计算一个函数count(obj),该函数返回对象中属性数量的数量:</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">let user &#x3D; &#123;
+  name:&#39;zhang&#39;,
+  age:30,
+&#125;
+
+function count(user)&#123;
+  return Object.keys(user).length
+&#125;
+
+count(user)  &#x2F;&#x2F;2
+</code></pre>
+
+<h1 id="解构赋值"><a href="#解构赋值" class="headerlink" title="解构赋值"></a>解构赋值</h1><p>对象: 通过键来存储数据项的单个实体<br>数组：将数据收集到一个有序的集合中</p>
+<h1 id="350-两个数组的交集-II-indexOf检查是否另一个数组存在，哈希表记录元素出现的个数、序列优化循环"><a href="#350-两个数组的交集-II-indexOf检查是否另一个数组存在，哈希表记录元素出现的个数、序列优化循环" class="headerlink" title="350 两个数组的交集 II  (indexOf检查是否另一个数组存在，哈希表记录元素出现的个数、序列优化循环)"></a>350 两个数组的交集 II  (indexOf检查是否另一个数组存在，哈希表记录元素出现的个数、序列优化循环)</h1><ul>
+<li>indexOf 检查是否在另一个数组中存在<pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">遍历其中一个数组nums1,在另一个数组nums2 中是否存在该元素
+- 存在放入到结果中，并在nums2中删除
+- 不存在则不做任何操作</code></pre>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">&#x2F;&#x2F;方法一
+const intersect &#x3D; (nums1,nums2) &#x3D;&gt; &#123;
+  let _result &#x3D; [] &#x2F;&#x2F;定义一个空数组
+  for(let i &#x3D; 0; i&lt;nums1.length;i++&gt;)&#123;
+    let j &#x3D;  nums2.indexOf(nums1[i])  &#x2F;&#x2F;判断当前元素是否在nums2中出现 ,如果出现用j进行过存储索引
+   &#x2F;&#x2F;如果不出现为-1
+   if(j &gt;&#x3D; 0 )&#123;  &#x2F;&#x2F;如果大于等于0证明出现了进行push
+      _result.push(nums1[i]) 
+      nums2.splice(j,1)  &#x2F;&#x2F;删除nums2 中的数据 避免重复
+   &#125;
+   return _result
+  &#125;
+&#125;
+&#x2F;&#x2F;方法二
+function intersect(nums1:number[],nums2:number[]):number[]&#123;
+   return nums1.filter(el &#x3D;&gt; &#123;
+     const index &#x3D; nums2.indexOf(el)
+     if(index &gt; -1) nums2 &#x3D; [...nums2.slice(0,index),...nums.slice(index + 1)]
+     return index &gt; -1;
+   &#125;)
+&#125;</code></pre></li>
+</ul>
+
+</div>
+  <o3o key="mizore" api="https://o3o.mizore.site:2333"></o3o>
+  
+<script src="/o3o/o3o.js"></script>
+
+  
+<link rel="stylesheet" href="/css/o3o.css">
+
+</main>
+    <footer>
+  <div class="footer-info">© 2018-2022 zhangliyao | Powerd by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> | Theme <a
+      target="_blank" rel="noopener" href="https://github.com/mizoreyo/hexo-theme-insnow">Insnow</a> | <a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">蜀ICP备20005398号</a></div>
+  <div class="footer-info">
+    <a class="footer-i" target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/mizoreyo/static/images/wechat.PNG"><i class="iconfont icon-wechat"></i></a>
+    <a class="footer-i" target="_blank" rel="noopener" href="https://github.com/mizoreyo"><i class="iconfont icon-github-fill"></i></a>
+    <a class="footer-i" href="/atom.xml"><i class="iconfont icon-rss"></i></a>
+    <a class="footer-i" href="mailto:mizoreyo@outlook.com"><i class="iconfont icon-mail"></i></a>
+  </div>
+</footer>
+  </div>
+</body>
+
+
+</html>

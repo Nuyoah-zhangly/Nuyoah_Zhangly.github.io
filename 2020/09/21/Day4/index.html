@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="utf-8">
+  
+  <title>
+    
+    Day4:知识点记录
+    
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  
+<script src="https://cdn.staticfile.org/prism/1.17.1/prism.min.js"></script>
+
+  
+<script src="https://cdn.staticfile.org/prism/1.17.1/plugins/autoloader/prism-autoloader.min.js"></script>
+
+  
+<link rel="stylesheet" href="/css/prism/material-light.css">
+
+  
+<link rel="stylesheet" href="/css/prism/material-dark.css">
+
+  
+<script src="https://cdn.staticfile.org/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.js"></script>
+
+  
+<link rel="stylesheet" href="https://cdn.staticfile.org/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Noto+Sans+SC:wght@300&display=swap.css">
+
+  
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<script>
+  function setIsNight(isNight) {
+    localStorage.setItem('isNight', isNight)
+  }
+
+  function getIsNight() {
+    return localStorage.getItem('isNight')
+  }
+
+  function switchTheme() {
+    let isNight = getIsNight()
+    if (isNight === 'false') {
+      document.documentElement.className = 'dark'
+      document.getElementsByClassName('theme-switcher')[0].textContent = '😴'
+      setIsNight('true')
+    } else {
+      document.documentElement.className = 'light'
+      document.getElementsByClassName('theme-switcher')[0].textContent = '😳'
+      setIsNight('false')
+    }
+  }
+
+  let isNight = getIsNight()
+  if (isNight == null) {
+    isNight = 'false'
+    setIsNight('false')
+  }
+  if (isNight === 'false') {
+    document.documentElement.className = 'light'
+  } else {
+    document.documentElement.className = 'dark'
+  }
+</script>
+
+<body>
+  <div class="show-area">
+    <header>
+  <ul class="nav">
+    <li class="nav-child">
+      <a href="/">首页</a>
+    </li>
+    <li class="nav-child">
+      <a href="/categories">分类</a>
+    </li>
+    <li class="nav-child">
+      <a href="/tags">标签</a>
+    </li>
+    <li class="nav-child">
+      <a href="/about">关于</a>
+    </li>
+    <li class="nav-child">
+      <a href="/collection">收藏</a>
+    </li>
+    <li class="nav-child">
+      <a href="/board">留言</a>
+    </li>
+  </ul>
+  <div class="theme-switcher" onclick="switchTheme()">😳</div>
+  <script>
+    if (isNight === 'false') {
+      document.getElementsByClassName('theme-switcher')[0].textContent = '😳'
+    } else {
+      document.getElementsByClassName('theme-switcher')[0].textContent = '😴'
+    }
+  </script>
+</header>
+    <main class="main-body">
+  <div class="toc-container">
+    <div class="toc-toggle">
+      <i id="toc-b-icon" class="iconfont icon-liebiao-01" onclick="toggleShow()"></i>
+    </div>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Map-and-Set-%E6%98%A0%E5%B0%84%E5%92%8C%E9%9B%86%E5%90%88"><span class="toc-number">1.</span> <span class="toc-text">Map and Set(映射和集合)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Map-%E7%B1%BB%E4%BC%BC%E6%95%B0%E7%BB%84"><span class="toc-number">1.1.</span> <span class="toc-text">Map   类似数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Map-%E7%9A%84%E8%BF%AD%E4%BB%A3"><span class="toc-number">1.1.1.</span> <span class="toc-text">Map 的迭代</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E5%AF%B9%E8%B1%A1%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAMap-%E4%BD%BF%E7%94%A8Object-entries"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">普通对象如何创建一个Map  使用Object.entries()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8EMap%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1-%E4%BD%BF%E7%94%A8Object-fromEntries"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">从Map创建对象  使用Object.fromEntries()</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Set"><span class="toc-number">1.2.</span> <span class="toc-text">Set</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Set%E8%BF%AD%E4%BB%A3-iteration"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">Set迭代(iteration)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E5%94%AF%E4%B8%80%E5%85%83%E7%B4%A0"><span class="toc-number">1.2.0.1.1.</span> <span class="toc-text">过滤数组中的唯一元素</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E5%8C%85%E8%A3%85%E5%99%A8"><span class="toc-number">2.</span> <span class="toc-text">对象包装器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#217-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0-%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D-%E6%AF%94%E8%BE%83%E9%95%BF%E5%BA%A6"><span class="toc-number">3.</span> <span class="toc-text">217 存在重复元素(数组去重,比较长度)</span></a></li></ol>
+  </div>
+  
+  <script>
+    var show = false
+    function toggleShow() {
+      if (show) {
+        document.getElementsByClassName('toc')[0].className = 'toc'
+        document.getElementById('toc-b-icon').className = 'iconfont icon-liebiao-01'
+      } else {
+        document.getElementsByClassName('toc')[0].className = 'toc show'
+        document.getElementById('toc-b-icon').className = 'iconfont icon-quxiao-01'
+      }
+      show = !show
+    }
+    document.getElementsByClassName('toc')[0].onclick = toggleShow
+  </script>
+  
+  <div class="article-header">
+    <h1 class="article-title">Day4:知识点记录</h1>
+    <div class="article-details">
+      <div class="article-post-date"><span>Posted at </span> 2020-09-21</div>
+      <div class="article-tags">
+        
+        <a href="/tags/Javascript">#Javascript</a>
+        
+      </div>
+    </div>
+  </div>
+  <div class="article">
+  
+  <ul>
+<li>for of 的原理？</li>
+<li>Iterable object 迭代器如何实现，怎么写的？</li>
+<li>字面量为什么循环不了？</li>
+<li>0.1+0.2   为什么会有不等于0.3,怎么解决这个问题？</li>
+<li>字符串为啥是不变得？</li>
+<li>双精度64位?</li>
+</ul>
+<h1 id="Map-and-Set-映射和集合"><a href="#Map-and-Set-映射和集合" class="headerlink" title="Map and Set(映射和集合)"></a>Map and Set(映射和集合)</h1><h2 id="Map-类似数组"><a href="#Map-类似数组" class="headerlink" title="Map   类似数组"></a>Map   类似数组</h2><p>Map 是一个带键的数据项的集合，就像一个 Object 一样。 但是它们最大的差别是 Map 允许任何类型的键（key）。</p>
+<p>属性和方法</p>
+<ul>
+<li>new Map()  创建map</li>
+<li>map.set(key,value) 根据键存储值</li>
+<li>map.get(key) 根据键来返回值，如果map中不存在对应的key,则返回undefined。</li>
+<li>map.has(key) 如果key存在返回true，否则返回false。</li>
+<li>map.delete(key) 删除指定键的值</li>
+<li>map.clear(key) 清空map</li>
+<li>map.size 返回当前元素的个数</li>
+</ul>
+<blockquote>
+<p>Map和对象不同，Map键不会转换为字符串,键可以是任何类型<br>Map 可以将对象作为键</p>
+</blockquote>
+<pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">Map 是怎么比较键的？
+Map 使用SameValueZero 算法来比较键是否相等,它和严格相等 &#x3D;&#x3D;&#x3D; 差不多，区别是NaN被看成是等于NaN,所以NaN也可以作为键
+</code></pre>
+
+<h3 id="Map-的迭代"><a href="#Map-的迭代" class="headerlink" title="Map 的迭代"></a>Map 的迭代</h3><p>如果要在Map里使用循环，可以使用三个方法:</p>
+<ul>
+<li>map.keys() 遍历并返回所有的键值</li>
+<li>map.value() 遍历并返回所有的值</li>
+<li>map.entries()遍历并返回所有的实体 [key,value] ,for…of 在默认情况下使用的就是这个。</li>
+</ul>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">let recipeMap &#x3D; new Map([
+  [&#39;cucumber&#39;,500],[&#39;tomatoes&#39;,350],[&#39;onion&#39;,50]
+])
+&#x2F;&#x2F;遍历多有的实体[key,value]
+
+for(let entry of recipeMap)&#123; &#x2F;&#x2F;recipeMap.entries()相同
+   console.log(entry); &#x2F;&#x2F;[&quot;cucumber&quot;, 500] [&quot;tomatoes&quot;, 350][&quot;onion&quot;, 50]
+&#125;
+</code></pre>
+
+<h4 id="普通对象如何创建一个Map-使用Object-entries"><a href="#普通对象如何创建一个Map-使用Object-entries" class="headerlink" title="普通对象如何创建一个Map  使用Object.entries()"></a>普通对象如何创建一个Map  使用Object.entries()</h4><p>如果我们想要从一个已有的普通对象来创建一个Map,我们可以使用内建方法Object.entries(obj),该返回对象的键/值对数组。</p>
+<p>从一个对象创建一个Map:</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">let obj &#x3D; &#123;
+  name:&#39;zhang&#39;,
+  age:30
+&#125;
+let map &#x3D; new Map(Object.entries(obj));
+
+console.log(map.set(&#39;name&#39;)) &#x2F;&#x2F;zhang
+</code></pre>
+
+<p>这里，Object.entries 返回键/值对数组：[ [“name”,”zhang”], [“age”, 30] ]。这就是 Map 所需要的格式。</p>
+<h4 id="从Map创建对象-使用Object-fromEntries"><a href="#从Map创建对象-使用Object-fromEntries" class="headerlink" title="从Map创建对象  使用Object.fromEntries()"></a>从Map创建对象  使用Object.fromEntries()</h4><p>Object.entries() 给定一个具有[key,value] 键值对的数组，它会根据给定的数组创建一个对象</p>
+ <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">let prices &#x3D; Object.fromEntries([  &#x2F;&#x2F;从Map得到一个普通对象
+  [&#39;banana&#39;,1],
+  [&#39;orange&#39;,2],
+  [&#39;meat&#39;,3],
+])  
+
+&#x2F;&#x2F; 现在 &#123;banana: 1, orange: 2, meat: 3&#125;
+
+ console.log(prices.orange) &#x2F;&#x2F;2</code></pre>
+
+<h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><p>Set 是一个特殊类型的集合  “值”的集合(没有键)，它的每一个值只能出现一个</p>
+<p>方法如下:</p>
+<ul>
+<li>new Set(iterable) 创建一个set,如果提供了一个interable对象 (通常是数组) ，将会从数组里面复制值到set中。</li>
+<li>set.add(value) 添加一个值,返回set本身   重复调用一个值只会出现一次</li>
+<li>set.delete(value) 删除值如果 value 在这个方法调用的时候存在则返回 true ，否则返回 false。</li>
+<li>set.has(value) 如果value在set中,返回true,否则返回false</li>
+<li>set.clear() 清空set</li>
+<li>set.size 返回数组长度</li>
+</ul>
+<h4 id="Set迭代-iteration"><a href="#Set迭代-iteration" class="headerlink" title="Set迭代(iteration)"></a>Set迭代(iteration)</h4><p>我们可以使用for..of 或者forEach 来遍历Set</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">let set &#x3D; new Set([&quot;oranges&quot;,&quot;apples&quot;,&quot;bananas&quot;])
+for(let value of set) console.log(value)
+set.forEach((value,set) &#x3D;&gt;&#123;
+  console.log(value)
+  console.log(set)
+&#125;)</code></pre>
+
+<blockquote>
+<p>Map 中用于迭代的方法在 Set中也同样支持.<br>在Map和Set中迭代总是按照值插入的顺序进行的,所以我们不能说这些集合是无序的,但是我们不能对元素进行重新排序.也不能直接按其标号来获取元素.</p>
+</blockquote>
+<p> 例子</p>
+<h5 id="过滤数组中的唯一元素"><a href="#过滤数组中的唯一元素" class="headerlink" title="过滤数组中的唯一元素"></a>过滤数组中的唯一元素</h5><p>定义一个数组arr<br>创建一个函数unique(arr),该函数返回一个由arr中所有元素所组成的数组</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">function unique(arr)&#123;
+  return Array.from(new Set(arr))  &#x2F;&#x2F; return [...new Set(arr)]
+&#125;
+
+let values &#x3D; [&quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;,&quot;B&quot;]
+
+alert(unique(values))  &#x2F;&#x2F;Hare,Krishna,:-O
+</code></pre>
+
+
+
+
+<h1 id="对象包装器"><a href="#对象包装器" class="headerlink" title="对象包装器"></a>对象包装器</h1><h1 id="217-存在重复元素-数组去重-比较长度"><a href="#217-存在重复元素-数组去重-比较长度" class="headerlink" title="217 存在重复元素(数组去重,比较长度)"></a>217 存在重复元素(数组去重,比较长度)</h1><p>给定一个重复数组,判断是否出现重复元素。</p>
+<ul>
+<li>如果任意一值在数组中出现至少两次,函数返回true</li>
+<li>如果数组中每个元素都不相同,则返回false</li>
+</ul>
+<pre class="line-numbers language-typescript" data-language="typescript"><code class="language-typescript">&#x2F;&#x2F;方法一
+function containsDuplicata()&#123;
+   return nums.some((el,index) &#x3D;&gt;nums.indexOf(el) !&#x3D;&#x3D; index)
+&#125;
+&#x2F;&#x2F;方法二
+
+const containsDuplicata &#x3D; nums &#x3D;&gt; &#123;
+  let set &#x3D; new Set(nums)
+  return set.size !&#x3D;&#x3D; nums.length 
+&#125;
+
+
+&#x2F;&#x2F;方法三
+
+function containsDuplicata(nums:number[]):boolean &#123;
+    return [...new Set(nums)].length !&#x3D;&#x3D; nums.length
+&#125;</code></pre>
+
+
+
+</div>
+  <o3o key="mizore" api="https://o3o.mizore.site:2333"></o3o>
+  
+<script src="/o3o/o3o.js"></script>
+
+  
+<link rel="stylesheet" href="/css/o3o.css">
+
+</main>
+    <footer>
+  <div class="footer-info">© 2018-2022 zhangliyao | Powerd by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> | Theme <a
+      target="_blank" rel="noopener" href="https://github.com/mizoreyo/hexo-theme-insnow">Insnow</a> | <a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">蜀ICP备20005398号</a></div>
+  <div class="footer-info">
+    <a class="footer-i" target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/mizoreyo/static/images/wechat.PNG"><i class="iconfont icon-wechat"></i></a>
+    <a class="footer-i" target="_blank" rel="noopener" href="https://github.com/mizoreyo"><i class="iconfont icon-github-fill"></i></a>
+    <a class="footer-i" href="/atom.xml"><i class="iconfont icon-rss"></i></a>
+    <a class="footer-i" href="mailto:mizoreyo@outlook.com"><i class="iconfont icon-mail"></i></a>
+  </div>
+</footer>
+  </div>
+</body>
+
+
+</html>
