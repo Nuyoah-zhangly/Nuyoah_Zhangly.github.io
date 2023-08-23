@@ -62,6 +62,157 @@ let b &#x3D; (a, 1) ;&#x2F;&#x2F; b &#x3D; 1
       </tags>
   </entry>
   <entry>
+    <title>Day10:知识点记录</title>
+    <url>/2020/09/27/Day10/</url>
+    <content><![CDATA[<h1 id="1-清除定时器"><a href="#1-清除定时器" class="headerlink" title="1. 清除定时器"></a>1. 清除定时器</h1><p>就这？不是哟，我其实表达的是批量清除定时器，一般我们会在定时器调用的时候将它赋值给一个变量，然后将在需要清除定时器的时候使用 clearTimeout 或者 clearInterval 就可以清除定时器了。那么如果你想批量清除定时器又该如何清除呢？<br>其实很简单，小伙伴们在控制台打印一下使用 setTimeout 或者 setInterval 的返回值可能就知道改怎么做了。啥？你没 get 到，好吧，让我细细道来。<br>每个定时器调用的时候都会返回一个数字值 id，这个 id 值是递增的，每次你调用定时器后，id 值都会加一，如果后面你想清除全局的定制器，你可以再设一个定制器，用它的返回值来个 for 循环即可，代码如下：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">function clearAllTimer() &#123;
+  let timer &#x3D; setInterval(() &#x3D;&gt; &#123;&#125;);
+  for (let i &#x3D; 1; i &lt;&#x3D; timer; i++) &#123;
+    clearInterval(i);
+    clearTimeout(i);
+  &#125;
+&#125;</code></pre>
+
+<pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">如果你只想清除特定范围或者特定的几个定时器的话，
+可以将它们的值传到一个数组里面去，再进行一个 for 循环即可</code></pre>
+
+<pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">注：谷歌浏览器的定时器返回数值ID以1为起，
+fireFox要在原定时器的序位的基础上加1，我试了一下，起始值确实是2。</code></pre>
+
+<h1 id="2-获取当前月份的最后一天"><a href="#2-获取当前月份的最后一天" class="headerlink" title="2.获取当前月份的最后一天"></a>2.获取当前月份的最后一天</h1><p>乍一看，好像挺简单的。但是一般的小伙伴都是一看就会，一用就废，认真想一下感觉好像实现起来有点难，其实就一行代码，挺简单的。</p>
+<pre class="line-numbers language-javaascript" data-language="javaascript"><code class="language-javaascript">function getFirstDay(year, month) &#123;
+  return new Date(year, month, 0).getDate()
+&#125;
+</code></pre>
+
+<h1 id="3-获取变量的数据类型"><a href="#3-获取变量的数据类型" class="headerlink" title="3.获取变量的数据类型"></a>3.获取变量的数据类型</h1><p>如何获取变量的数据类型？很常见的问题了，很多同学都会遇到，有挺多靠谱和不靠谱的回答，在这里我找了一种比较靠谱的回答，源码看下面：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">function getType(val) &#123;
+  return Object.prototype.toString.call(val).replace(&#x2F;^\[object (.+)\]$&#x2F;, &quot;$1&quot;);
+&#125;</code></pre>
+
+<h1 id="4-calc-的使用"><a href="#4-calc-的使用" class="headerlink" title="4. calc 的使用"></a>4. calc 的使用</h1><p>calc 是一个 css3 新增的功能，可以用来指定元素的长度，动态计算长度值。写个小案例如下。以下只是小试牛刀，后面你需要自行百度 calc 的具体使用。</p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang&#x3D;&quot;en&quot;&gt;
+  &lt;head&gt;
+       
+    &lt;meta charset&#x3D;&quot;UTF-8&quot; &#x2F;&gt;
+      
+    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot; &#x2F;&gt;
+      
+    &lt;title&gt;Document&lt;&#x2F;title&gt;
+      
+    &lt;style&gt; 
+       .parent &#123;  
+          width: 200px; 
+          height: 200px;  
+          background-color: lightblue;   
+       &#125;  
+        .son &#123;     
+            width: calc(100% - 20px);     
+            height: calc(100% - 20px);     
+            background-color: lightpink;  
+          &#125;  
+    &lt;&#x2F;style&gt;
+  &lt;&#x2F;head&gt;
+  &lt;body&gt; 
+    &lt;div class&#x3D;&quot;parent&quot;&gt;    
+      &lt;div class&#x3D;&quot;son&quot;&gt; &lt;&#x2F;div&gt; 
+    &lt;&#x2F;div&gt;
+  &lt;&#x2F;body&gt;
+&lt;&#x2F;html&gt;</code></pre>
+<pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">注：calc在使用的时候需要注意它的运算符，
+- 和 + 在使用的时候前后都必须要有空格，* 和 &#x2F; 倒是没有这个要求</code></pre>
+]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Day12:知识点记录</title>
+    <url>/2020/09/29/Day12/</url>
+    <content><![CDATA[<h1 id="JSON方法"><a href="#JSON方法" class="headerlink" title="JSON方法"></a>JSON方法</h1><p> JSON.stringify()可以应用于原始数据(primitive)类型</p>
+<p>JSON支持以下数据类型</p>
+<ul>
+<li>Objects()</li>
+<li>Arrays()</li>
+<li>strings</li>
+<li>numbers</li>
+<li>boolean</li>
+<li>null</li>
+</ul>
+<pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">JSON是语言无关的纯数据规范,因此一些特定于JavaScript的对象属性会被JSON.stringify跳过。
+- 函数属性(方法)
+- Symbol类型的属性
+- 存储undefined的属性。</code></pre>
+
+<blockquote>
+<p>JSON.stringify() 不得有循环引用</p>
+</blockquote>
+<p>包装对象？<br>将对象转换为JSON再转换回</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">let user &#x3D; &#123;
+  name: &quot;John Smith&quot;,
+  age: 35
+&#125;;
+
+let sJion &#x3D; JSON.parse(JSON.stringify(user))
+console.log(sJion)
+</code></pre>
+
+<p>示例:排除反向引用</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">let room &#x3D; &#123;
+  number:23
+&#125;;
+let meetup &#x3D; &#123;
+  title:&quot;conference&quot;,
+  occupiedBy:[&#123;name:&quot;John&quot;&#125;,&#123;name:&quot;John&quot;&#125;],
+  place:room
+&#125;;
+
+&#x2F;&#x2F;循环引用
+room.occupiedBy &#x3D; meetup,
+meetuo.self &#x3D; meetup
+
+let o &#x3D; JSON.stringify(meetup,function replacer(key,value)&#123;
+ 
+return (key !&#x3D; 0 &amp;&amp; value &#x3D;&#x3D; meetup)
+
+&#125;)
+</code></pre>
+
+<ul>
+<li>算法<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">&#x2F;&#x2F; 123 456 789
+  var rotate &#x3D; function(maxrix)&#123;
+    for(let i &#x3D; 0;i&lt;maxrix.length;i++)&#123;
+      for(let j &#x3D;i;j&lt;maxrix.length;j++)&#123;
+        let temp &#x3D; maxrix[i][j]     
+        maxrix[i][j] &#x3D; maxrix[j][i]  
+        maxrix[j][i] &#x3D; temp
+      &#125;
+
+      &#x2F;&#x2F;交换得到  147 258 693
+    &#125;
+    &#x2F;&#x2F;每个数组倒序排列  &#x2F;&#x2F; 741 852 963
+    return maxrix.map(item &#x3D;&gt; item.reverse())
+
+  &#125;
+
+
+第一个参数  第二个参顺
+回忽略值
+三个参数值   </code></pre></li>
+</ul>
+]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>C++高级语言程序设计</title>
     <url>/2020/10/30/C++%E9%AB%98%E7%BA%A7%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/</url>
     <content><![CDATA[<h1 id="C-概述"><a href="#C-概述" class="headerlink" title="C++ 概述"></a>C++ 概述</h1><p>发给对方</p>
@@ -918,66 +1069,19 @@ int &amp;min(int &amp;num1,int &amp;num2)
       </tags>
   </entry>
   <entry>
-    <title>Day10:知识点记录</title>
-    <url>/2020/09/27/Day10/</url>
-    <content><![CDATA[<h1 id="1-清除定时器"><a href="#1-清除定时器" class="headerlink" title="1. 清除定时器"></a>1. 清除定时器</h1><p>就这？不是哟，我其实表达的是批量清除定时器，一般我们会在定时器调用的时候将它赋值给一个变量，然后将在需要清除定时器的时候使用 clearTimeout 或者 clearInterval 就可以清除定时器了。那么如果你想批量清除定时器又该如何清除呢？<br>其实很简单，小伙伴们在控制台打印一下使用 setTimeout 或者 setInterval 的返回值可能就知道改怎么做了。啥？你没 get 到，好吧，让我细细道来。<br>每个定时器调用的时候都会返回一个数字值 id，这个 id 值是递增的，每次你调用定时器后，id 值都会加一，如果后面你想清除全局的定制器，你可以再设一个定制器，用它的返回值来个 for 循环即可，代码如下：</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">function clearAllTimer() &#123;
-  let timer &#x3D; setInterval(() &#x3D;&gt; &#123;&#125;);
-  for (let i &#x3D; 1; i &lt;&#x3D; timer; i++) &#123;
-    clearInterval(i);
-    clearTimeout(i);
-  &#125;
-&#125;</code></pre>
+    <title>Day13:知识点记录</title>
+    <url>/2020/10/01/Day13/</url>
+    <content><![CDATA[<h1 id="复习"><a href="#复习" class="headerlink" title="复习"></a>复习</h1><h2 id="javascript-简介"><a href="#javascript-简介" class="headerlink" title="javascript 简介"></a>javascript 简介</h2><p>不同的引擎</p>
+<p> v8 : Chrome 和Opera中的Javascript 引擎</p>
+<p>SpiderMonkey: Firefox中的javascript引擎</p>
+<pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">引擎是如何工作
+引擎很复杂，但是基本原理很简单
+1.引擎(通过嵌入在浏览器中)读取(&quot;解析&quot;)脚本
+2.然后将脚本转化为&quot;编译&quot;的机器语言
+3.然后这机器语言代码块快速地运行
+引擎会对流程中的每个阶段都进行优化。它甚至可以在运行时监视编译的脚本，分析数据流并根据这些进一步优化机器代码</code></pre>
 
-<pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">如果你只想清除特定范围或者特定的几个定时器的话，
-可以将它们的值传到一个数组里面去，再进行一个 for 循环即可</code></pre>
-
-<pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">注：谷歌浏览器的定时器返回数值ID以1为起，
-fireFox要在原定时器的序位的基础上加1，我试了一下，起始值确实是2。</code></pre>
-
-<h1 id="2-获取当前月份的最后一天"><a href="#2-获取当前月份的最后一天" class="headerlink" title="2.获取当前月份的最后一天"></a>2.获取当前月份的最后一天</h1><p>乍一看，好像挺简单的。但是一般的小伙伴都是一看就会，一用就废，认真想一下感觉好像实现起来有点难，其实就一行代码，挺简单的。</p>
-<pre class="line-numbers language-javaascript" data-language="javaascript"><code class="language-javaascript">function getFirstDay(year, month) &#123;
-  return new Date(year, month, 0).getDate()
-&#125;
-</code></pre>
-
-<h1 id="3-获取变量的数据类型"><a href="#3-获取变量的数据类型" class="headerlink" title="3.获取变量的数据类型"></a>3.获取变量的数据类型</h1><p>如何获取变量的数据类型？很常见的问题了，很多同学都会遇到，有挺多靠谱和不靠谱的回答，在这里我找了一种比较靠谱的回答，源码看下面：</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">function getType(val) &#123;
-  return Object.prototype.toString.call(val).replace(&#x2F;^\[object (.+)\]$&#x2F;, &quot;$1&quot;);
-&#125;</code></pre>
-
-<h1 id="4-calc-的使用"><a href="#4-calc-的使用" class="headerlink" title="4. calc 的使用"></a>4. calc 的使用</h1><p>calc 是一个 css3 新增的功能，可以用来指定元素的长度，动态计算长度值。写个小案例如下。以下只是小试牛刀，后面你需要自行百度 calc 的具体使用。</p>
-<pre class="line-numbers language-html" data-language="html"><code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang&#x3D;&quot;en&quot;&gt;
-  &lt;head&gt;
-       
-    &lt;meta charset&#x3D;&quot;UTF-8&quot; &#x2F;&gt;
-      
-    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot; &#x2F;&gt;
-      
-    &lt;title&gt;Document&lt;&#x2F;title&gt;
-      
-    &lt;style&gt; 
-       .parent &#123;  
-          width: 200px; 
-          height: 200px;  
-          background-color: lightblue;   
-       &#125;  
-        .son &#123;     
-            width: calc(100% - 20px);     
-            height: calc(100% - 20px);     
-            background-color: lightpink;  
-          &#125;  
-    &lt;&#x2F;style&gt;
-  &lt;&#x2F;head&gt;
-  &lt;body&gt; 
-    &lt;div class&#x3D;&quot;parent&quot;&gt;    
-      &lt;div class&#x3D;&quot;son&quot;&gt; &lt;&#x2F;div&gt; 
-    &lt;&#x2F;div&gt;
-  &lt;&#x2F;body&gt;
-&lt;&#x2F;html&gt;</code></pre>
-<pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">注：calc在使用的时候需要注意它的运算符，
-- 和 + 在使用的时候前后都必须要有空格，* 和 &#x2F; 倒是没有这个要求</code></pre>
+<h4 id="浏览器的同源策略："><a href="#浏览器的同源策略：" class="headerlink" title="浏览器的同源策略："></a>浏览器的同源策略：</h4><p>域名、协议、端口号相同  </p>
 ]]></content>
       <categories>
         <category>web前端</category>
@@ -1031,110 +1135,6 @@ fireFox要在原定时器的序位的基础上加1，我试了一下，起始值
   return pattern
 &#125;
 console.log(formatDate(1601364446000,&quot;yyyy年MM月dd日&quot;))</code></pre>]]></content>
-      <categories>
-        <category>web前端</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Day12:知识点记录</title>
-    <url>/2020/09/29/Day12/</url>
-    <content><![CDATA[<h1 id="JSON方法"><a href="#JSON方法" class="headerlink" title="JSON方法"></a>JSON方法</h1><p> JSON.stringify()可以应用于原始数据(primitive)类型</p>
-<p>JSON支持以下数据类型</p>
-<ul>
-<li>Objects()</li>
-<li>Arrays()</li>
-<li>strings</li>
-<li>numbers</li>
-<li>boolean</li>
-<li>null</li>
-</ul>
-<pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">JSON是语言无关的纯数据规范,因此一些特定于JavaScript的对象属性会被JSON.stringify跳过。
-- 函数属性(方法)
-- Symbol类型的属性
-- 存储undefined的属性。</code></pre>
-
-<blockquote>
-<p>JSON.stringify() 不得有循环引用</p>
-</blockquote>
-<p>包装对象？<br>将对象转换为JSON再转换回</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">let user &#x3D; &#123;
-  name: &quot;John Smith&quot;,
-  age: 35
-&#125;;
-
-let sJion &#x3D; JSON.parse(JSON.stringify(user))
-console.log(sJion)
-</code></pre>
-
-<p>示例:排除反向引用</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">let room &#x3D; &#123;
-  number:23
-&#125;;
-let meetup &#x3D; &#123;
-  title:&quot;conference&quot;,
-  occupiedBy:[&#123;name:&quot;John&quot;&#125;,&#123;name:&quot;John&quot;&#125;],
-  place:room
-&#125;;
-
-&#x2F;&#x2F;循环引用
-room.occupiedBy &#x3D; meetup,
-meetuo.self &#x3D; meetup
-
-let o &#x3D; JSON.stringify(meetup,function replacer(key,value)&#123;
- 
-return (key !&#x3D; 0 &amp;&amp; value &#x3D;&#x3D; meetup)
-
-&#125;)
-</code></pre>
-
-<ul>
-<li>算法<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">&#x2F;&#x2F; 123 456 789
-  var rotate &#x3D; function(maxrix)&#123;
-    for(let i &#x3D; 0;i&lt;maxrix.length;i++)&#123;
-      for(let j &#x3D;i;j&lt;maxrix.length;j++)&#123;
-        let temp &#x3D; maxrix[i][j]     
-        maxrix[i][j] &#x3D; maxrix[j][i]  
-        maxrix[j][i] &#x3D; temp
-      &#125;
-
-      &#x2F;&#x2F;交换得到  147 258 693
-    &#125;
-    &#x2F;&#x2F;每个数组倒序排列  &#x2F;&#x2F; 741 852 963
-    return maxrix.map(item &#x3D;&gt; item.reverse())
-
-  &#125;
-
-
-第一个参数  第二个参顺
-回忽略值
-三个参数值   </code></pre></li>
-</ul>
-]]></content>
-      <categories>
-        <category>web前端</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Day13:知识点记录</title>
-    <url>/2020/10/01/Day13/</url>
-    <content><![CDATA[<h1 id="复习"><a href="#复习" class="headerlink" title="复习"></a>复习</h1><h2 id="javascript-简介"><a href="#javascript-简介" class="headerlink" title="javascript 简介"></a>javascript 简介</h2><p>不同的引擎</p>
-<p> v8 : Chrome 和Opera中的Javascript 引擎</p>
-<p>SpiderMonkey: Firefox中的javascript引擎</p>
-<pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">引擎是如何工作
-引擎很复杂，但是基本原理很简单
-1.引擎(通过嵌入在浏览器中)读取(&quot;解析&quot;)脚本
-2.然后将脚本转化为&quot;编译&quot;的机器语言
-3.然后这机器语言代码块快速地运行
-引擎会对流程中的每个阶段都进行优化。它甚至可以在运行时监视编译的脚本，分析数据流并根据这些进一步优化机器代码</code></pre>
-
-<h4 id="浏览器的同源策略："><a href="#浏览器的同源策略：" class="headerlink" title="浏览器的同源策略："></a>浏览器的同源策略：</h4><p>域名、协议、端口号相同  </p>
-]]></content>
       <categories>
         <category>web前端</category>
       </categories>
@@ -1815,6 +1815,17 @@ UTC(协调世界时) UTC时区知名之一，比如UTC(协调世界时)提前0�
       </tags>
   </entry>
   <entry>
+    <title>postman</title>
+    <url>/2022/06/10/postman/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>自动化测试</category>
+      </categories>
+      <tags>
+        <tag>接口测试</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>cypress</title>
     <url>/2022/06/28/cypress/</url>
     <content><![CDATA[]]></content>
@@ -1832,17 +1843,6 @@ UTC(协调世界时) UTC时区知名之一，比如UTC(协调世界时)提前0�
       <categories>
         <category>自动化测试</category>
       </categories>
-  </entry>
-  <entry>
-    <title>postman</title>
-    <url>/2022/06/10/postman/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>自动化测试</category>
-      </categories>
-      <tags>
-        <tag>接口测试</tag>
-      </tags>
   </entry>
   <entry>
     <title>垃圾回收机制</title>
@@ -2013,13 +2013,13 @@ ACK 是确认字符，在数据通信中，接受站给发给站的 一种 传�
       </tags>
   </entry>
   <entry>
-    <title>1、第一章 信息化发展</title>
-    <url>/2023/08/23/1%E3%80%81%E7%AC%AC%E4%B8%80%E7%AB%A0-%E4%BF%A1%E6%81%AF%E5%8C%96%E5%8F%91%E5%B1%95/index/</url>
+    <title>2、第二章 信息技术发展</title>
+    <url>/2023/08/23/2%E3%80%81%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E4%BF%A1%E6%81%AF%E6%8A%80%E6%9C%AF%E5%8F%91%E5%B1%95/index/</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>2、第二章 信息技术发展</title>
-    <url>/2023/08/23/2%E3%80%81%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E4%BF%A1%E6%81%AF%E6%8A%80%E6%9C%AF%E5%8F%91%E5%B1%95/index/</url>
+    <title>1、第一章 信息化发展</title>
+    <url>/2023/08/23/1%E3%80%81%E7%AC%AC%E4%B8%80%E7%AB%A0-%E4%BF%A1%E6%81%AF%E5%8C%96%E5%8F%91%E5%B1%95/index/</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
